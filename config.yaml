@@ -1,0 +1,66 @@
+cookie:
+  expiry_days: 30
+  key: cle_secrete_a_changer_123
+  name: rag_cours_uir_cookie
+credentials:
+  usernames:
+    anas benali:
+      email: anas.benali100@uir.ac.ma
+      first_name: anas
+      last_name: benali
+      logged_in: false
+      password: $2b$12$Dusnt4kEvHOsC9lv0TO6H.Ed7nbKh13NUmP8Sk/aiWl5427/ouxc2
+      password_hint: anas
+      roles: null
+    anas.benali:
+      email: anas.benali@uir.ac.ma
+      first_name: anas
+      last_name: benali
+      logged_in: false
+      password: $2b$12$1uiqnX9707mm5.tNoo6cz.Q9yTSfOAcO7r54Ynmxv2KWXNdSGd7FK
+      password_hint: anas
+      roles: null
+    brahim alal:
+      email: brahim.alal@gmail.com
+      first_name: brahim
+      last_name: alal
+      logged_in: false
+      password: $2b$12$v4FZ.jdSXLcwLjOCK7qIve2LGb0H/a2HDhB6EcygXCWlWcu4/dXZO
+      password_hint: brahim
+      roles: null
+    etudiant:
+      email: etudiant@uir.ac.ma
+      name: Etudiant Test
+      password: $2b$12$6iO9H0GZt4Yv2hABf.sLNuLKqLPVfWPcJPPiDCnNO2HFnffWT8nS.
+    jury:
+      email: jury@uir.ac.ma
+      name: Membre du Jury
+      password: $2b$12$69fnSD.3KJEkRa9xVuo8YObGYFfWxYG.2wwsw7J1A5Q6jrQzumjPS
+    med amine:
+      email: ma.jeloul100@gmail.com
+      first_name: Mohamed Amine
+      last_name: JELOUL
+      logged_in: false
+      password: $2b$12$NBY7B9PhDsBtRdMzYAdAM.9wyLbYY5cVpQGW7j4kLlVXYw152YYSG
+      password_hint: amine
+      roles: null
+    oussama akbour:
+      email: oussama.akbour@gmail.com
+      first_name: oussama
+      last_name: akbour
+      logged_in: false
+      password: $2b$12$h0j2lhhu4N9DkEqrsvlO1.AsEy2ZMfbkuFpR7Qawuujy6MSqvCO3q
+      password_hint: '1234'
+      roles: null
+    prof:
+      email: prof@uir.ac.ma
+      name: Prof. Kobbane
+      password: $2b$12$QxHeTWbVmhSTtylLyZ4c7.I9qX0Y2n0zhYNjb.f5dDNa0RQqe4cfe
+    said jeloul:
+      email: said.jeloul@gmail.com
+      first_name: said
+      last_name: jeloul
+      logged_in: false
+      password: $2b$12$29iMBORgm0HiNraBNkR4ZOgvBH8fXGKMAi4QaBRUtMvizyCQ7TRUG
+      password_hint: said
+      roles: null
