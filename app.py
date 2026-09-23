@@ -25,14 +25,39 @@ st.markdown("""
         background-color: #0e1117;
     }
 
+    h1, h2, h3 {
+        color: #f0f0f0 !important;
+    }
+
     section[data-testid="stSidebar"] {
         background-color: #161b22;
         border-right: 1px solid #2a2f3a;
     }
 
+    /* Champs de saisie : fond sombre mais texte bien lisible */
+    .stTextInput input,
+    .stTextArea textarea,
+    [data-testid="stChatInput"] textarea {
+        background-color: #1c2129 !important;
+        color: #f0f0f0 !important;
+        border: 1px solid #3a4150 !important;
+        border-radius: 8px !important;
+    }
+    .stTextInput input::placeholder,
+    .stTextArea textarea::placeholder {
+        color: #8a8f98 !important;
+    }
+    .stTextInput label,
+    .stTextArea label {
+        color: #d0d0d0 !important;
+    }
+
     .stButton > button {
         border-radius: 8px;
-        border: 1px solid #2a2f3a;
+        border: 1px solid #3a4150;
+        background-color: #1c2129;
+        color: #f0f0f0;
+        font-weight: 600;
         transition: all 0.2s ease;
     }
     .stButton > button:hover {
@@ -40,26 +65,32 @@ st.markdown("""
         color: #d97757;
     }
 
-    [data-testid="stChatInput"] textarea {
-        border-radius: 12px;
-    }
-
     [data-testid="stChatMessage"] {
         border-radius: 12px;
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1rem;
         margin-bottom: 0.5rem;
-    }
-
-    h2 {
-        font-weight: 700;
+        background-color: #1c2129;
+        border: 1px solid #2a2f3a;
     }
 
     .stTabs [data-baseweb="tab"] {
         font-weight: 600;
+        color: #8a8f98;
     }
     .stTabs [aria-selected="true"] {
         color: #d97757 !important;
         border-bottom-color: #d97757 !important;
+    }
+
+    @keyframes flotter {
+        0%, 100% { transform: translateY(0px) rotate(-3deg); }
+        50% { transform: translateY(-10px) rotate(3deg); }
+    }
+    .icone-flottante {
+        display: inline-block;
+        animation: flotter 3s ease-in-out infinite;
+        font-size: 3rem;
+        margin: 0 0.5rem;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -107,11 +138,19 @@ if not st.session_state.get("authentication_status"):
         st.session_state.mode_auth = None
 
     st.markdown(
-        "<div style='text-align:center; margin-top:3rem; font-size:3rem;'>🎓</div>",
+        "<div style='text-align:center; margin-top:2rem;'>"
+        "<span class='icone-flottante'>📚</span>"
+        "<span class='icone-flottante' style='animation-delay:0.5s;'>✏️</span>"
+        "<span class='icone-flottante' style='animation-delay:1s;'>📖</span>"
+        "</div>",
         unsafe_allow_html=True,
     )
     st.markdown(
-        "<h2 style='text-align:center; margin-top:0;'>Assistant IA - Cours</h2>",
+        "<h2 style='text-align:center; margin-top:0.5rem;'>Assistant IA - Cours</h2>",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        "<p style='text-align:center; color:#8a8f98;'>Pose tes questions, comprends tes cours</p>",
         unsafe_allow_html=True,
     )
 
@@ -199,15 +238,15 @@ else:
         st.session_state.conversation_active = None
 
     with st.sidebar:
-        st.markdown(f"### {st.session_state['name']}")
+        st.markdown(f"### 📖 {st.session_state['name']}")
         st.caption(st.session_state.get("email", ""))
         st.divider()
 
-        if st.button("+ Nouvelle conversation", use_container_width=True):
+        if st.button("✏️ Nouvelle conversation", use_container_width=True):
             st.session_state.conversation_active = None
             st.rerun()
 
-        st.markdown("**Historique**")
+        st.markdown("**📚 Historique**")
         if not st.session_state.conversations:
             st.caption("Aucune conversation pour le moment")
         else:
@@ -218,7 +257,7 @@ else:
 
         st.divider()
 
-        with st.expander("Parametres"):
+        with st.expander("⚙️ Parametres"):
             st.markdown("**Modele IA**")
             modele_choisi = st.selectbox(
                 "Choisir le modele",
@@ -229,7 +268,7 @@ else:
             st.session_state["modele_llm"] = modele_choisi
 
             st.divider()
-            st.markdown("**Ajouter des documents**")
+            st.markdown("**📎 Ajouter des documents**")
             fichiers_pdf = st.file_uploader(
                 "Ajouter des cours (PDF)", type="pdf", accept_multiple_files=True, key="upload_parametres"
             )
@@ -259,14 +298,24 @@ else:
 
     if index is None:
         st.markdown(
-            f"<h2 style='text-align:center; margin-top:6rem;'>Bonjour, {st.session_state['name']}</h2>",
+            "<div style='text-align:center; margin-top:3rem;'>"
+            "<span class='icone-flottante'>📚</span></div>",
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            f"<h2 style='text-align:center;'>Bonjour, {st.session_state['name']}</h2>",
             unsafe_allow_html=True,
         )
         st.info("Aucun document indexe pour le moment. Va dans Parametres pour ajouter tes cours PDF.")
     else:
         if titre_actif is None:
             st.markdown(
-                f"<h2 style='text-align:center; margin-top:6rem;'>Bonjour, {st.session_state['name']}</h2>",
+                "<div style='text-align:center; margin-top:3rem;'>"
+                "<span class='icone-flottante'>📖</span></div>",
+                unsafe_allow_html=True,
+            )
+            st.markdown(
+                f"<h2 style='text-align:center;'>Bonjour, {st.session_state['name']}</h2>",
                 unsafe_allow_html=True,
             )
             messages = []
