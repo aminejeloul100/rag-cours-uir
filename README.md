@@ -1,4 +1,4 @@
-# Assistant IA - Cours (RAG)
+# Assistant-cours (RAG)
 
 Assistant conversationnel qui répond aux questions des étudiants en se basant uniquement sur le contenu réel de leurs supports de cours (PDF), via une architecture **RAG (Retrieval-Augmented Generation)**. Projet réalisé dans le cadre du PFA 4ème année Big Data & IA - UIR.
 
@@ -29,6 +29,8 @@ Assistant conversationnel qui répond aux questions des étudiants en se basant 
 ## Installation
 
 ```bash
+git clone https://github.com/aminejeloul100/Assistant-cours.git
+cd Assistant-cours
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
